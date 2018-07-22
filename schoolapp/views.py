@@ -66,3 +66,16 @@ class TimeTableView(generics.ListCreateAPIView):
 class Attendanceview(generics.ListCreateAPIView):
     serializer_class = AttendanceSerializer
     queryset = AttendanceModel.objects.all()
+
+class attFilter(generics.ListAPIView):
+    serializer_class = AttendanceSerializer
+    queryset = AttendanceModel.objects.all()
+
+    def filter_queryset(self, queryset):
+        subject = self.request.query_params.get('subject', None)
+        student = self.request.query_params.get('student', None)
+        if subject is not None:
+            queryset = queryset.filter(subject=subject)
+        if student is not None:
+            queryset = queryset.filter(student=student)
+        return queryset

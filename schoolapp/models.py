@@ -34,3 +34,4 @@ class AttendanceModel(models.Model):
     student = models.ForeignKey(StudentModel, related_name='student', on_delete=models.CASCADE)
     subject = models.ForeignKey(TimetableModel, related_name='timetable', on_delete=models.CASCADE)
     time = models.TimeField(blank=True)
+    date= models.DateField()

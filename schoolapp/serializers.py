@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import StudentModel, TimetableModel, AttendanceModel
 
 class StudentSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField(source="print_id" )
     class Meta:
         model = StudentModel
         fields = ('__all__')
@@ -19,6 +20,9 @@ class TimeTableSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 class AttendanceSerializer(serializers.ModelSerializer):
+    reg_no = serializers.CharField(source='student.Reg_no', read_only=False)
+    name = serializers.CharField(source='student.name', read_only=True)
+    unit = serializers.CharField(source='subject.subject', read_only=True)
     class Meta:
         model = AttendanceModel
         fields = ('__all__')
