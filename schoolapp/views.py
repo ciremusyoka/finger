@@ -70,6 +70,19 @@ class Attendanceview(generics.ListCreateAPIView):
 class attFilter(generics.ListAPIView):
     serializer_class = AttendanceSerializer
     queryset = AttendanceModel.objects.all()
+    # model=AttendanceModel
+    #
+    # def get_object(self):
+    #     stud = self.request.query_params.get('student', None)
+    #     query = self.model.objects.get(student.Reg_no=stud)
+    #     school = SchoolSite()
+    #     reg = query.Reg_no
+    #     print_id = query.print_id
+    #     id = query.id
+    #     school.feestatement(id, print_id, reg)
+    #
+    #     return school.feestatement(id, print_id, reg)
+
 
     def filter_queryset(self, queryset):
         subject = self.request.query_params.get('subject', None)
@@ -77,5 +90,5 @@ class attFilter(generics.ListAPIView):
         if subject is not None:
             queryset = queryset.filter(subject=subject)
         if student is not None:
-            queryset = queryset.filter(student=student)
+            queryset = queryset.filter(student__Reg_no__contains=student)
         return queryset

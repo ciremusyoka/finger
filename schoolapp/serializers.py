@@ -20,7 +20,7 @@ class TimeTableSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 class AttendanceSerializer(serializers.ModelSerializer):
-    reg_no = serializers.CharField(source='student.Reg_no', read_only=False)
+    reg_no = serializers.CharField(source='student.Reg_no', read_only=True)
     name = serializers.CharField(source='student.name', read_only=True)
     unit = serializers.CharField(source='subject.subject', read_only=True)
     class Meta:
