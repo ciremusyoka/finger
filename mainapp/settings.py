@@ -122,5 +122,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+REST_FRAMEWORK = {
+    "DATE_INPUT_FORMATS": ["%d-%m-%Y"],
+}
+
 
 STATIC_URL = '/static/'
