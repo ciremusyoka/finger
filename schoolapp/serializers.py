@@ -1,8 +1,18 @@
 from rest_framework import serializers
 from .models import StudentModel, TimetableModel, AttendanceModel
+from django.db import models
+from rest_framework.validators import UniqueValidator
+from django.db import utils
+from django.template.defaultfilters import slugify
+
+def validate_text(text):
+    print_id = slugify(text)
+
+    if StudentModel.objects(print_id=print_id):
+        raise serializers.ValidationError('The slug must be unique.')
 
 class StudentSerializer(serializers.ModelSerializer):
-    id = serializers.ReadOnlyField(source="print_id" )
+    # id = serializers.ReadOnlyField(source="print_id" )
     class Meta:
         model = StudentModel
         fields = ('__all__')

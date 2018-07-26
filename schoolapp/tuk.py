@@ -21,7 +21,7 @@ invoice = 'http://ar.tukenya.ac.ke/includes/invoice4.php'
 
 
 class SchoolSite:
-    def feestatement(self, id, print_name, stdno):
+    def feestatement(self, print_name, stdno):
         # url='http://ar.tukenya.ac.ke/checklogin.php?action=login'
         # reg=stdno
         # r=requests.post(url,{'PersistentCookie':'yes','username':reg})
@@ -46,7 +46,6 @@ class SchoolSite:
             name =names
             reg = stdno
             Print_id = print_name
-            id = id
             semester = data[8][1]
             course_code = data[3][1]
             course_name = data[4][1]
@@ -60,7 +59,7 @@ class SchoolSite:
                 cl=1
 
             details = {'name': name, 'Reg_no': reg, 'semester': semester, 'course_code': course_code, 'cl':cl,
-                       'course_name': course_name, 'bal': bal, 'print_id': Print_id, 'id': id, 'message': message}
+                       'course_name': course_name, 'bal': bal, 'print_id': Print_id, 'message': message}
             # detail= classstudent()
             # detail.student(name)
 

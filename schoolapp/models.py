@@ -6,7 +6,7 @@ from django.db import models
 
 class StudentModel(models.Model):
     name = models.CharField(max_length=20)
-    print_id = models.IntegerField()
+    print_id = models.IntegerField(primary_key=True,)
     Reg_no = models.CharField(max_length=30)
     group = models.CharField(max_length=20)
     semester = models.CharField(max_length=1000, blank=True)

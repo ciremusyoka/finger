@@ -33,7 +33,6 @@ class StudentFilter(generics.RetrieveAPIView):
         school = SchoolSite()
         reg = query.Reg_no
         print_id = query.print_id
-        id = query.id
         school.feestatement(id,print_id,reg)
 
         return school.feestatement(id,print_id,reg)

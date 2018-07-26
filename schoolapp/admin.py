@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import StudentModel, AttendanceModel, TimetableModel
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", "print_id", "Reg_no"]
+    list_display = ["print_id", "Reg_no" ,"name", "group"]
 
 admin.site.register(StudentModel, StudentAdmin)
 
